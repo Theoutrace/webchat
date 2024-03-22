@@ -8,6 +8,8 @@ function App() {
   const [clientName, setClientName] = useState("");
 
   useEffect(() => {
+    const clientWebsiteURL = window?.parent?.location?.href;
+    console.log(clientWebsiteURL);
     setClientName(searchParams.get("client").toUpperCase());
   }, [searchParams]);
   return (
