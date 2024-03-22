@@ -9,14 +9,8 @@ function App() {
   const [parentUrl, setParentUrl] = useState("");
 
   useEffect(() => {
-    window.addEventListener("message", function (event) {
-      // Check if the message is from an allowed origin
-      if (event.origin === "http://127.0.0.1:5500") {
-        var parentSiteURL = event.data;
-        setParentUrl(`Parent URL : ${parentSiteURL}`);
-      }
-    });
     setClientName(searchParams.get("client").toUpperCase());
+    setParentUrl(searchParams.get("parentURL").toUpperCase());
   }, [searchParams]);
   return (
     <div className="App">
@@ -25,7 +19,7 @@ function App() {
         <div>
           <h1>Hello</h1>
           <h5>from {clientName}</h5>
-          <h5>{parentUrl}</h5>
+          <h5>Being rendered on : {parentUrl}</h5>
         </div>
       </header>
     </div>
