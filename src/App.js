@@ -8,8 +8,14 @@ function App() {
   const [clientName, setClientName] = useState("");
 
   useEffect(() => {
-    const clientWebsiteURL = window?.parent?.location?.href;
-    console.log(clientWebsiteURL);
+    window.addEventListener("message", function (event) {
+      // Check if the message is from an allowed origin
+      if (event.origin === "http://127.0.0.1:5500") {
+        // Access the parent site's URL
+        var parentSiteURL = event.data;
+        console.log("Parent site's URL:", parentSiteURL);
+      }
+    });
     setClientName(searchParams.get("client").toUpperCase());
   }, [searchParams]);
   return (
