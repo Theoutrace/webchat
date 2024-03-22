@@ -6,14 +6,14 @@ import { useEffect, useState } from "react";
 function App() {
   const [searchParams] = useSearchParams();
   const [clientName, setClientName] = useState("");
+  const [parentUrl, setParentUrl] = useState("");
 
   useEffect(() => {
     window.addEventListener("message", function (event) {
       // Check if the message is from an allowed origin
       if (event.origin === "http://127.0.0.1:5500") {
-        // Access the parent site's URL
         var parentSiteURL = event.data;
-        console.log("Parent site's URL:", parentSiteURL);
+        setParentUrl(`Parent URL : ${parentSiteURL}`);
       }
     });
     setClientName(searchParams.get("client").toUpperCase());
@@ -25,6 +25,7 @@ function App() {
         <div>
           <h1>Hello</h1>
           <h5>from {clientName}</h5>
+          <h5>{parentUrl}</h5>
         </div>
       </header>
     </div>
