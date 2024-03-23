@@ -9,8 +9,8 @@ function App() {
   const [parentUrl, setParentUrl] = useState("");
 
   useEffect(() => {
-    setClientName(searchParams.get("client").toUpperCase());
-    setParentUrl(searchParams.get("parentURL").toUpperCase());
+    setClientName(searchParams?.get("client")?.toUpperCase());
+    setParentUrl(searchParams?.get("parentURL")?.toUpperCase());
   }, [searchParams]);
   return (
     <div className="App">
